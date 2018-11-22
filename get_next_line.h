@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 10:49:12 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/21 16:01:40 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/11/22 13:51:22 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # define BUFF_SIZE 9999
 
 int		get_next_line(const int fd, char **line);
+int		get_next_line_multiplefd(const int fd, char **line);
 
 #endif

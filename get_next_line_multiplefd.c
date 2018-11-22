@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 10:49:54 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/22 12:36:40 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/11/22 14:18:40 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,29 @@ int		ft_addnextread(int fd, char **buf)
 	return (readchar);
 }
 
-int		get_next_line(const int fd, char **line)
+int		get_next_line_multiplefd(const int fd, char **line)
 {
-	static char	*buf;
+	static char	*buf[1024];
 	int			i;
 	int			readchar;
 
 	readchar = -1;
-	if (!buf)
-		if (!(buf = ft_strnew(BUFF_SIZE + 1))
-				|| (readchar = ft_read_protec(fd, &buf)) == -1)
+	if (!(buf[fd]))
+		if (!(buf[fd] = ft_strnew(BUFF_SIZE + 1))
+				|| (readchar = ft_read_protec(fd, buf + fd) == -1))
 			return (-1);
 	i = -1;
-	while ((buf[++i] || readchar) && buf[i] != '\n')
-		if (!buf[i])
+	while ((buf[fd][++i] || readchar) && buf[fd][i] != '\n')
+		if (!buf[fd][i])
 		{
-			if ((readchar = ft_addnextread(fd, &buf)) == -1)
+			if ((readchar = ft_addnextread(fd, buf + fd)) == -1)
 				return (-1);
 			i--;
 		}
-	if (i || buf[i] == '\n')
+	if (i || buf[fd][i] == '\n')
 	{
-		*line = (buf[i] == '\n' ? ft_strsub(buf, 0, i) : ft_strdup(buf));
-		buf = ft_trimline(&buf, i);
+		*line = (buf[fd][i] == '\n' ? ft_strsub(buf[fd], 0, i) : ft_strdup(buf[fd]));
+		buf[fd] = ft_trimline(buf + fd, i);
 		return (1);
 	}
 	return (0);
