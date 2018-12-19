@@ -26,9 +26,3 @@ Provided all test files are valid, the executable will print the first ten lines
 ## Authors
 
 * **Anaelle Leclabart** - [anaiel](https://github.com/anaiel)
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
