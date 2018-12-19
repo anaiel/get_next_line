@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 11:40:04 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/22 13:25:18 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/19 17:25:53 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "libft/libft.h"
+#include "get_next_line.h"
 
 int		main(int argc, char **argv)
 {
@@ -23,7 +24,7 @@ int		main(int argc, char **argv)
 	char	*line;
 	int		ret;
 
-	if (argc = 1)
+	if (argc == 1)
 		fd = 0;
 	else if((fd = open(argv[1], O_RDONLY)) == -1)
 	{
