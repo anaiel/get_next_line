@@ -4,7 +4,12 @@ This project was completed in november 2018 as part of the 42 school cursus. The
 
 ## Getting Started
 
-Extra files are provided in order to compile an executable. Run `make` or `make single` to create an executable than supports only one file as an argument. Run `make multiple` to create an executable that can handle multiple files.
+Extra files are provided in order to compile an executable. 
+```
+git submodule init
+git submodule update --remote --merge
+```
+To get the latest version of the [libft library](http://github.com/anaiel/libft). Then run `make` or `make single` to create an executable than supports only one file as an argument. Run `make multiple` to create an executable that can handle multiple files.
 
 ## Running the tests
 
