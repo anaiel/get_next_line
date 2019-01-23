@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 10:49:12 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/22 13:51:22 by anleclab         ###   ########.fr       */
+/*   Updated: 2019/01/23 09:14:14 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
-# define BUFF_SIZE 9999
+# define BUFF_SIZE 4096
 
 int		get_next_line(const int fd, char **line);
 int		get_next_line_multiplefd(const int fd, char **line);

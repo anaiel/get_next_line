@@ -6,12 +6,11 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 10:49:54 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/22 12:36:40 by anleclab         ###   ########.fr       */
+/*   Updated: 2019/01/23 09:52:24 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft/libft.h"
 
 char	*ft_strdeljoin(char **dst, char **src)
 {
@@ -30,6 +29,7 @@ int		ft_read_protec(const int fd, char **buf)
 	res = read(fd, *buf, BUFF_SIZE);
 	if (res == -1)
 		ft_strdel(buf);
+	(*buf)[res] = 0;
 	return (res);
 }
 
@@ -39,10 +39,9 @@ char	*ft_trimline(char **str, int index)
 
 	if ((*str)[index] == '\n')
 	{
-		if (!(res = ft_strdup(*str + index + 1)) || !*res)
+		if (!(res = ft_strdup(*str + index + 1)) || !res[0])
 		{
-			if (res && !*res)
-				free(res);
+			free(res);
 			ft_strdel(str);
 			return (NULL);
 		}
@@ -64,7 +63,7 @@ int		ft_addnextread(int fd, char **buf)
 		ft_strdel(buf);
 		return (-1);
 	}
-	if (readchar)
+	if (readchar >= 0)
 		if (!(*buf = ft_strdeljoin(buf, &temp)))
 			return (-1);
 	return (readchar);
@@ -95,5 +94,6 @@ int		get_next_line(const int fd, char **line)
 		buf = ft_trimline(&buf, i);
 		return (1);
 	}
+	free(buf);
 	return (0);
 }

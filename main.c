@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 11:40:04 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/19 17:25:53 by anleclab         ###   ########.fr       */
+/*   Updated: 2019/01/23 09:42:29 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 #include "libft/libft.h"
 #include "get_next_line.h"
 
@@ -39,12 +40,14 @@ int		main(int argc, char **argv)
 			write(2, "Error: get_next_line failed.\n", 29);
 			return (1);
 		}
-		write(1, ft_itoa(ret), strlen(ft_itoa(ret)));
+		ft_putnbr(ret);
 		write(1, " : ", 3);
 		write(1, line, strlen(line));
 		write(1, "\n", 1);
+		free(line);
+		line = NULL;
 	}
-	write(1, ft_itoa(ret), strlen(ft_itoa(ret)));
+	ft_putnbr(ret);
 	write(1, " X\n", 3);
 	free(line);
 	close(fd);
