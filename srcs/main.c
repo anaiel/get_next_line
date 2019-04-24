@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include "libft/libft.h"
 #include "get_next_line.h"
 
 int		main(int argc, char **argv)
